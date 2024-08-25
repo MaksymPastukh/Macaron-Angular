@@ -1,15 +1,28 @@
-import {Component} from '@angular/core';
+import {Component, ContentChild, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {BenefitsType} from "../types/benefits.type";
 import {ProductType} from "../types/product.type";
 import {FormOrderType} from "../types/formOrder.type";
+import {ProductService} from "./services/product.service";
+import {ProductQuantityService} from "./services/product-quantity.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title: string = 'Macaroons';
+  public productItem: ProductType[] = []
+  public count: number = 0
+
+  @ViewChild('countProduct')
+  private countProduct!: ElementRef
+  @ViewChild('totalPurchaseAmount')
+  private totalPurchaseAmount!: ElementRef
+
+
+  constructor(public productService: ProductService, public productQuantity: ProductQuantityService) {
+  }
 
   public benefits: BenefitsType[] = [
     {
@@ -29,41 +42,20 @@ export class AppComponent {
       description: 'Вкус, качество и безопасность наших пирогов подтверждена декларацией о соответствии, которую мы получили 22.06.2016 г.'
     },
   ]
-  public products: ProductType[] = [
-    {
-      images: 'product-1.png',
-      title: 'Макарун с малиной',
-      descriptionQuantity: '1 шт.',
-      descriptionPrice: '2,30 руб.',
-    },
-    {
-      images: 'product-2.png',
-      title: 'Макарун с манго',
-      descriptionQuantity: '1 шт.',
-      descriptionPrice: '1,70 руб.',
-    },
-    {
-      images: 'product-3.png',
-      title: 'Пирог с ванилью',
-      descriptionQuantity: '1 шт.',
-      descriptionPrice: '2,10 руб.',
-    },
-    {
-      images: 'product-4.png',
-      title: 'Пирог с фисташками',
-      descriptionQuantity: '1 шт.',
-      descriptionPrice: '2,70 руб.',
-    },
-  ]
   public formOrder: FormOrderType = {
     productName: '',
     name: '',
     phone: ''
   }
 
-  public showPresent: boolean = false
+  public showPresent: boolean = true
   public phoneNumber: string = '+375 (29) 368-98-68'
   public linkInstagram: string = 'https://www.instagram.com/'
+
+  ngOnInit(): void {
+    this.productItem = this.productService.getProduct()
+
+  }
 
   burgerOpen(target: HTMLElement): void {
     target.classList.add('open')
@@ -80,7 +72,14 @@ export class AppComponent {
   addToOrder(product: ProductType, target: HTMLElement): void {
     this.scroll(target)
     this.formOrder.productName = product.title.toUpperCase()
+    this.count = this.productQuantity.count++
+    this.countProduct.nativeElement.style.display = 'flex'
+    this.totalPurchaseAmount.nativeElement.style.cssText = `
+              display: block;
+              transform: translate(0, 0);
+    `
   }
+
 
   protected readonly indexedDB = indexedDB;
 }

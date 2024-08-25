@@ -87,7 +87,7 @@
   <div class="container">
     <h2 class="product-title">Выберите свой макарун</h2>
     <div class="product-items">
-      <div class="product-item" *ngFor="let product of products">
+      <div class="product-item" *ngFor="let product of productItem">
         <img src="assets/images/{{product.images}}" alt="{{product.title}}" class="product-images">
         <div class="product-item-title">{{ product.title }}</div>
         <div class="product-item-text">
@@ -174,8 +174,11 @@
 </footer>
 <div class="order-fixed" *ngIf="showPresent">
   <div class="order-present">
-    <img src="assets/images/present.png" alt="Подарок">
-    <div class="present">
+    <img src="assets/images/cart.png" alt="Подарок">
+    <div class="count-product" #countProduct>
+      {{ count }}
+    </div>
+    <div class="present"  #totalPurchaseAmount>
       Оформите заказ
       <div>и получите подарок!</div>
     </div>
