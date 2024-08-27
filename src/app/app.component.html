@@ -51,7 +51,7 @@
         Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
       </div>
       <div class="main-action">
-        <button class="btn" (click)="scroll(product)">Выбрать макарун</button>
+        <button class="btn" (click)="scroll(product)" appBackgroundButton>Выбрать макарун</button>
       </div>
     </div>
     <div class="main-images">
@@ -87,15 +87,8 @@
   <div class="container">
     <h2 class="product-title">Выберите свой макарун</h2>
     <div class="product-items">
-      <div class="product-item" *ngFor="let product of productItem">
-        <img src="assets/images/{{product.images}}" alt="{{product.title}}" class="product-images">
-        <div class="product-item-title">{{ product.title }}</div>
-        <div class="product-item-text">
-          <p>{{ product.descriptionQuantity }}</p>
-          <p>{{ product.descriptionPrice }}</p>
-        </div>
-        <button class="btn btn-ord" (click)="addToOrder(product, order)">Заказать</button>
-      </div>
+      <product-component  *ngFor="let product of productItem" [product]='product'
+                          (addNotificationEvent)="addToOrder($event, order)"></product-component>
     </div>
   </div>
 </section>
@@ -135,7 +128,10 @@
         </label>
       </form>
       <div class="order-action">
-        <button class="btn btn-form">Оформить заказ</button>
+        <button class="btn btn-form" appBackgroundButton
+        [appBackgroundButtonFocus] = "'red'"
+        [appBackgroundButtonDefault] = "'white'"
+        >Оформить заказ</button>
       </div>
     </div>
   </div>
@@ -176,11 +172,10 @@
   <div class="order-present">
     <img src="assets/images/cart.png" alt="Подарок">
     <div class="count-product" #countProduct>
-      {{ count }}
+      {{ productQuantity.count }}
     </div>
-    <div class="present"  #totalPurchaseAmount>
-      Оформите заказ
-      <div>и получите подарок!</div>
+    <div class="present" #totalPurchaseAmount>
+      {{ productQuantity.test() | currency2}}
     </div>
   </div>
 </div>

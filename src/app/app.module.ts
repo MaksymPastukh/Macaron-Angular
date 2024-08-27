@@ -4,10 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
+import { ProductComponent } from './components/product/product.component';
+import { BackgroundButtonDirective } from './directives/background-button.directive';
+import { CurrencyPipe } from './pipes/currency.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductComponent,
+    BackgroundButtonDirective,
+    CurrencyPipe
   ],
   imports: [
     BrowserModule,

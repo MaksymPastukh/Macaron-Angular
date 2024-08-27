@@ -4,6 +4,7 @@ import {ProductType} from "../types/product.type";
 import {FormOrderType} from "../types/formOrder.type";
 import {ProductService} from "./services/product.service";
 import {ProductQuantityService} from "./services/product-quantity.service";
+import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import {ProductQuantityService} from "./services/product-quantity.service";
 export class AppComponent implements OnInit {
   title: string = 'Macaroons';
   public productItem: ProductType[] = []
-  public count: number = 0
+  public sumValue: string = ''
+
 
   @ViewChild('countProduct')
   private countProduct!: ElementRef
@@ -69,15 +71,15 @@ export class AppComponent implements OnInit {
     target.scrollIntoView({behavior: "smooth"})
   }
 
-  addToOrder(product: ProductType, target: HTMLElement): void {
+  addToOrder(title: string, target: HTMLElement): void {
     this.scroll(target)
-    this.formOrder.productName = product.title.toUpperCase()
-    this.count = this.productQuantity.count++
+    this.formOrder.productName = title
     this.countProduct.nativeElement.style.display = 'flex'
     this.totalPurchaseAmount.nativeElement.style.cssText = `
               display: block;
               transform: translate(0, 0);
     `
+    alert(`«${title} добавлен в корзину!»`)
   }
 
 
