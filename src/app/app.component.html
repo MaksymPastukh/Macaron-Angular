@@ -78,7 +78,7 @@
       <div class="advantage-item" *ngFor="let benefit of benefits; let i = index">
         <div class="advantage-item-icon">{{ i + 1 }}</div>
         <div class="advantage-item-title">{{ benefit.title }}</div>
-        <div class="advantage-item-text">{{ benefit.description }}</div>
+        <div class="advantage-item-text">{{ benefit.description | txtEditing : 95}}</div>
       </div>
     </div>
   </div>
@@ -130,7 +130,7 @@
       <div class="order-action">
         <button class="btn btn-form" appBackgroundButton
         [appBackgroundButtonFocus] = "'red'"
-        [appBackgroundButtonDefault] = "'white'"
+        [appBackgroundButtonDefault] = "'linear-gradient(to top, rgb(113, 8, 30) 0%, rgb(215, 72, 92) 100%)'"
         >Оформить заказ</button>
       </div>
     </div>
@@ -162,7 +162,7 @@
     <div class="footer-phone">
       <a href="#">
         <div>
-          {{ phoneNumber }}
+          {{ phoneNumber | phone }}
         </div>
       </a>
     </div>
@@ -175,7 +175,7 @@
       {{ productQuantity.count }}
     </div>
     <div class="present" #totalPurchaseAmount>
-      {{ productQuantity.test() | currency2}}
+      {{ productQuantity.init() | currencyCustom}}
     </div>
   </div>
 </div>

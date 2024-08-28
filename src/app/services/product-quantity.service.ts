@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {ProductService} from "./product.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class ProductQuantityService {
   constructor() {
   }
 
-  test(): string {
+  init(): string {
     return this.sum.toFixed(2).replace('.', ',')
   }
 

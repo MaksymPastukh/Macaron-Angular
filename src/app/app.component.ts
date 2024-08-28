@@ -1,10 +1,9 @@
-import {Component, ContentChild, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {BenefitsType} from "../types/benefits.type";
 import {ProductType} from "../types/product.type";
 import {FormOrderType} from "../types/formOrder.type";
 import {ProductService} from "./services/product.service";
 import {ProductQuantityService} from "./services/product-quantity.service";
-import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
 
 @Component({
   selector: 'app-root',
@@ -51,12 +50,11 @@ export class AppComponent implements OnInit {
   }
 
   public showPresent: boolean = true
-  public phoneNumber: string = '+375 (29) 368-98-68'
+  public phoneNumber: string = '375293689868'
   public linkInstagram: string = 'https://www.instagram.com/'
 
   ngOnInit(): void {
     this.productItem = this.productService.getProduct()
-
   }
 
   burgerOpen(target: HTMLElement): void {
