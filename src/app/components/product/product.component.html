@@ -1,0 +1,10 @@
+<div class="product-item">
+  <img src="assets/images/{{product.images}}" alt="{{product.title}}" class="product-images">
+  <div class="product-item-title">{{ product.title }}</div>
+  <div class="product-item-text">
+    <p>{{ product.descriptionQuantity }}</p>
+    <p>{{ product.descriptionPrice }}</p>
+  </div>
+  <button class="btn btn-ord" (click)="addNotificationAppComp()" appBackgroundButton>Заказать</button>
+</div>
+

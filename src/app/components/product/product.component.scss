@@ -1,0 +1,38 @@
+.product-item {
+  width: 26.3rem;
+  height: 22.9rem;
+  border-radius: 2rem;
+  border: .2rem solid rgb(255, 255, 255);
+  position: relative;
+
+}
+
+.product-images {
+  position: absolute;
+  left: 3.5rem;
+  bottom: 16.8rem;
+  transition: all .5s ease-in-out;
+}
+
+.product-item-title {
+  color: rgb(255, 255, 255);
+  font-family: Tavolga-Free, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 10.9rem;
+}
+
+.product-item-text {
+
+  color: rgb(255, 255, 255);
+  font-family: Gilroy, sans-serif;
+  font-size: 15px;
+  margin-bottom: 1.5rem;
+  position: absolute;
+  top: 15.7rem;
+  left: 2rem;
+}
+
+.product-item:hover .product-images {
+  transform: scale(1.1);
+}
