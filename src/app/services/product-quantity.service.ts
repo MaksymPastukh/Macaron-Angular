@@ -10,8 +10,5 @@ export class ProductQuantityService {
   constructor() {
   }
 
-  init(): string {
-    return this.sum.toFixed(2).replace('.', ',')
-  }
 
 }

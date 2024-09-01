@@ -18,9 +18,7 @@ export class ProductComponent implements OnInit {
 
   addNotificationAppComp() {
     this.productQuantity.count++
-    let amountProductToString: string = this.product.descriptionPrice.replace(',', '.')
-    let amountProductToNumber: number = parseFloat(amountProductToString)
-    this.productQuantity.sum += amountProductToNumber
+    this.productQuantity.sum += this.product.descriptionPrice
     this.addNotificationEvent.emit(this.product.title)
   }
 

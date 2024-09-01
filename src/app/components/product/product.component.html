@@ -3,7 +3,7 @@
   <div class="product-item-title">{{ product.title }}</div>
   <div class="product-item-text">
     <p>{{ product.descriptionQuantity }}</p>
-    <p>{{ product.descriptionPrice }}</p>
+    <p>{{ product.descriptionPrice  | currency : "RUB" : 'руб.'  }}</p>
   </div>
   <button class="btn btn-ord" (click)="addNotificationAppComp()" appBackgroundButton>Заказать</button>
 </div>

@@ -175,7 +175,7 @@
       {{ productQuantity.count }}
     </div>
     <div class="present" #totalPurchaseAmount>
-      {{ productQuantity.init() | currencyCustom}}
+      {{ productQuantity.sum | currency : "RUB" : 'руб.' }}
     </div>
   </div>
 </div>
